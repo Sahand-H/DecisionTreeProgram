@@ -16,7 +16,7 @@ print(X)
 
 '''
 Method to create a bernoulli random var and assign a PMF to it
-p = probability of the success event
+p = probability of the success event.
 '''
 def BernVar(p):
     x = {0: (1-p), 1: p}
