@@ -1,5 +1,7 @@
 import operator as op
 import functools
+import math
+
 def ncr(n, r):
     r = min(r, n-r)
     if r == 0: return 1
@@ -44,3 +46,28 @@ def BinVar(n,p):
 
 X = BinVar(4,0.5)
 print(X)
+
+'''
+Method to create a Geometric random var and assign a PMF to it
+n is the number of failures, so given n=2 trials, the first and second are a failure but the third is a success, and
+probability that is calculated is the probability of the third trial being a success (or rather, that there are only 2 
+failures)
+'''
+def GeoVar(n,p):
+    x = {i: ((1-p)**(n-1))*p for i in [1,n]}
+    return x
+
+X = GeoVar(3,0.6)
+print(X)
+
+'''
+Method to create a Poisson random var with parameter p (lambda) and assign a pmf to it:
+ASSUME: P>0
+'''
+def PoVar(n,p):
+    x = {i: ((math.exp(-p))*((p**i)/(math.factorial(i)))) for i in range(n+1)}
+    return x
+
+X = PoVar(3,1.5)
+print(X)
+
